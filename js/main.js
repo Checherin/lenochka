@@ -348,10 +348,7 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 
   btn.addEventListener('click', e => {
     e.stopPropagation();
-    // Close docs panel if open
-    document.getElementById('docs-panel')?.classList.remove('open');
-    document.getElementById('docs-backdrop')?.classList.remove('open');
-    document.getElementById('docs-btn')?.setAttribute('aria-expanded', 'false');
+
     panel.classList.contains('open') ? closePanel() : openPanel();
   });
   closeBtn?.addEventListener('click', closePanel);
@@ -388,40 +385,7 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   }
 })();
 
-/* ═══════════════════════════════════════════════════════════
-   DOCS PANEL
-   ═══════════════════════════════════════════════════════════ */
-(function () {
-  const btn      = document.getElementById('docs-btn');
-  const panel    = document.getElementById('docs-panel');
-  const closeBtn = document.getElementById('docs-panel-close');
-  const backdrop = document.getElementById('docs-backdrop');
-  const themePanel = document.getElementById('theme-panel');
-  if (!btn || !panel) return;
-
-  function open() {
-    panel.classList.add('open');
-    backdrop?.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-    // Close theme panel if open
-    themePanel?.classList.remove('open');
-    document.getElementById('theme-backdrop')?.classList.remove('open');
-    document.getElementById('theme-btn')?.setAttribute('aria-expanded', 'false');
-  }
-  function close() {
-    panel.classList.remove('open');
-    backdrop?.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-  }
-
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-    panel.classList.contains('open') ? close() : open();
-  });
-  closeBtn?.addEventListener('click', close);
-  backdrop?.addEventListener('click', close);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-})();
+/* Docs panel removed — moved to hero visual */
 
 /* Old auto-carousel removed */
 
