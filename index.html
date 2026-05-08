@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Леночка — ИИ-ассистент в Telegram для малого бизнеса. Дайджест, задачи, база знаний, брошенные клиенты." />
+  <title>Леночка — Твой бизнес-ассистент в Telegram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Epilogue:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div id="cursor-dot"  aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Scroll progress -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════
+       NAV
+  ══════════════════════════════════════════ -->
+  <header id="nav" role="banner">
+    <div class="nav-inner container">
+      <a href="#hero" class="nav-logo">Леночка<span class="dot">.</span>io</a>
+      <ul class="nav-links" role="list">
+        <li><a href="#features">Возможности</a></li>
+        <li><a href="#audience">Для кого</a></li>
+        <li><a href="#pricing">Тарифы</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="https://t.me/Lenochka24_bot" class="nav-cta" target="_blank" rel="noopener">Попробовать →</a>
+
+      <!-- Docs button + panel -->
+      <div class="docs-btn-wrap" id="docs-btn-wrap">
+        <button class="nav-icon-btn" id="docs-btn" aria-label="Правовые документы" aria-expanded="false">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 1h7l4 4v9a1 1 0 01-1 1H3a1 1 0 01-1-1V2a1 1 0 011-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M10 1v4h4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M5 8h6M5 11h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div id="docs-panel" role="dialog" aria-label="Правовые документы">
+          <div class="panel-header">
+            <span class="panel-title">Документы</span>
+            <button class="panel-close" id="docs-panel-close" aria-label="Закрыть">✕</button>
+          </div>
+          <div class="docs-panel-list">
+            <a href="files/politika-konfidencialnosti.docx"
+               download="Леночка_Политика_конфиденциальности.docx"
+               class="docs-panel-item">
+              <span class="docs-panel-icon" aria-hidden="true">
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+                  <path d="M2 0h7l4 4v10a1 1 0 01-1 1H2a1 1 0 01-1-1V1a1 1 0 011-1z" fill="currentColor" opacity=".1" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                  <path d="M9 0v4h4" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" opacity=".5"/>
+                  <path d="M3 7h8M3 10h6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".6"/>
+                </svg>
+              </span>
+              <span class="docs-panel-name">Политика конфиденциальности</span>
+              <span class="docs-panel-dl" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M6 1v7M2.5 5.5L6 9l3.5-3.5M1 11h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+            <a href="files/soglasie-na-obrabotku-pdn.docx"
+               download="Леночка_Согласие_на_обработку_ПДн.docx"
+               class="docs-panel-item">
+              <span class="docs-panel-icon" aria-hidden="true">
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+                  <path d="M2 0h7l4 4v10a1 1 0 01-1 1H2a1 1 0 01-1-1V1a1 1 0 011-1z" fill="currentColor" opacity=".1" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                  <path d="M9 0v4h4" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" opacity=".5"/>
+                  <path d="M3.5 9.5l2 2 4.5-4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+                </svg>
+              </span>
+              <span class="docs-panel-name">Согласие на обработку ПДн</span>
+              <span class="docs-panel-dl" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M6 1v7M2.5 5.5L6 9l3.5-3.5M1 11h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+            <a href="files/publichnaya-oferta.docx"
+               download="Леночка_Публичная_оферта.docx"
+               class="docs-panel-item">
+              <span class="docs-panel-icon" aria-hidden="true">
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+                  <path d="M2 0h7l4 4v10a1 1 0 01-1 1H2a1 1 0 01-1-1V1a1 1 0 011-1z" fill="currentColor" opacity=".1" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                  <path d="M9 0v4h4" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" opacity=".5"/>
+                  <path d="M3 7h8M3 10h6M3 13h4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".6"/>
+                </svg>
+              </span>
+              <span class="docs-panel-name">Публичная оферта</span>
+              <span class="docs-panel-dl" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M6 1v7M2.5 5.5L6 9l3.5-3.5M1 11h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+            <a href="files/politika-cookie.docx"
+               download="Леночка_Политика_cookie.docx"
+               class="docs-panel-item">
+              <span class="docs-panel-icon" aria-hidden="true">
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+                  <path d="M2 0h7l4 4v10a1 1 0 01-1 1H2a1 1 0 01-1-1V1a1 1 0 011-1z" fill="currentColor" opacity=".1" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                  <path d="M9 0v4h4" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" opacity=".5"/>
+                  <circle cx="5" cy="9.5" r="1.2" fill="currentColor" opacity=".55"/>
+                  <circle cx="9" cy="8.5" r=".9" fill="currentColor" opacity=".45"/>
+                  <circle cx="7" cy="12" r=".8" fill="currentColor" opacity=".5"/>
+                </svg>
+              </span>
+              <span class="docs-panel-name">Политика cookie</span>
+              <span class="docs-panel-dl" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M6 1v7M2.5 5.5L6 9l3.5-3.5M1 11h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+          <div class="docs-panel-footer">
+            Документы для ознакомления и модерации
+          </div>
+        </div>
+
+        <div id="docs-backdrop" class="panel-backdrop"></div>
+      </div>
+
+      <!-- Theme customiser button + panel -->
+      <div class="theme-btn-wrap" id="theme-btn-wrap">
+        <button class="nav-icon-btn theme-btn" id="theme-btn" aria-label="Настройки оформления" aria-expanded="false">
+          <span class="theme-btn-inner" aria-hidden="true"></span>
+        </button>
+
+        <div id="theme-panel" role="dialog" aria-label="Оформление сайта">
+          <div class="panel-header">
+            <span class="panel-title">Тема</span>
+            <button class="panel-close" id="panel-close" aria-label="Закрыть">✕</button>
+          </div>
+          <div class="panel-section">
+            <div class="theme-options">
+              <button class="theme-option active" data-theme-val="light" id="opt-light">
+                <div class="theme-preview theme-preview-light"></div>
+                <span class="theme-option-label">☀️ Светлая</span>
+              </button>
+              <button class="theme-option" data-theme-val="dark" id="opt-dark">
+                <div class="theme-preview theme-preview-dark"></div>
+                <span class="theme-option-label">🌙 Тёмная</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / theme panel -->
+
+      <div id="theme-backdrop"></div>
+
+      <button class="hamburger" id="hamburger" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav>
+      <a href="#features">Возможности</a>
+      <a href="#audience">Для кого</a>
+      <a href="#pricing">Тарифы</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://t.me/Lenochka24_bot" target="_blank" rel="noopener" class="nav-cta" style="display:inline-block;width:fit-content;margin-top:8px;">Попробовать →</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section id="hero">
+      <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+      <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero-grid">
+
+          <!-- Copy -->
+          <div class="hero-copy">
+            <div class="hero-eyebrow">
+              <span class="live-dot"></span>
+              Работает прямо сейчас
+            </div>
+
+            <h1 class="hero-h1">
+              Пока ты<br>
+              <span class="line-coral"><span class="scramble-word" data-final="читаешь">читаешь</span> это —</span><br>
+              <span class="line-muted">Леночка уже ответила.</span>
+            </h1>
+
+            <p class="hero-sub">
+              <strong>Леночка</strong> живёт в Telegram и ведёт твой бизнес фоново:
+              отвечает на клиентов, помнит задачи, находит тех, о ком ты забыл,
+              и присылает сводку каждое утро в 9:00.
+            </p>
+
+            <div class="hero-btns">
+              <a href="https://t.me/Lenochka24_bot" class="btn-fill" target="_blank" rel="noopener">
+                <span>Открыть в Telegram →</span>
+              </a>
+              <a href="#features" class="btn-outline">Как это работает</a>
+            </div>
+
+            <div class="hero-proof">
+              <div>
+                <div class="proof-num"><span data-counter data-target="2000" data-suffix="+">0+</span></div>
+                <div class="proof-label">бизнесов уже используют</div>
+              </div>
+              <div>
+                <div class="proof-num">14<sup>дн</sup></div>
+                <div class="proof-label">бесплатно без карты</div>
+              </div>
+              <div>
+                <div class="proof-num">20<sup>мин</sup></div>
+                <div class="proof-label">настройка с нуля</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual -->
+          <div class="hero-visual">
+            <div class="hero-visual-inner">
+              <div class="phone-card">
+                <div class="phone-status-bar">
+                  <span class="phone-app-name">Telegram</span>
+                  <span class="phone-status-icons">9:07 ●●●</span>
+                </div>
+                <div class="phone-chat-header">
+                  <div class="chat-ava" aria-hidden="true">Л</div>
+                  <div>
+                    <div class="chat-name">Леночка</div>
+                    <div class="chat-status chat-online">● онлайн</div>
+                  </div>
+                </div>
+                <div class="phone-messages" id="phone-messages" role="log" aria-live="polite">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+
+              <!-- Floating chips -->
+              <div class="float-chip float-chip-1" aria-hidden="true">
+                <span class="chip-dot chip-dot-green"></span>
+                8 брошенных клиентов
+              </div>
+              <div class="float-chip float-chip-2" aria-hidden="true">
+                <span class="chip-dot chip-dot-coral"></span>
+                14 задач на сегодня
+              </div>
+              <div class="float-chip float-chip-3" aria-hidden="true">
+                <span class="chip-dot chip-dot-gold"></span>
+                Экономит 6 ч/нед
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         MARQUEE TICKER
+    ══════════════════════════════════════════ -->
+    <div id="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <!-- repeated twice for seamless loop -->
+        <span class="ticker-item"><span class="t-num">2000+</span> бизнесов пользуются Леночкой</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">6 ч</span> экономит в неделю</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">3 сек</span> — найти любую информацию</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">0</span> потерянных задач</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">14 дней</span> бесплатно без карты</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">20 мин</span> — настройка с нуля</span>
+        <span class="ticker-sep">✦</span>
+        <!-- duplicate -->
+        <span class="ticker-item"><span class="t-num">2000+</span> бизнесов пользуются Леночкой</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">6 ч</span> экономит в неделю</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">3 сек</span> — найти любую информацию</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">0</span> потерянных задач</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">14 дней</span> бесплатно без карты</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item"><span class="t-num">20 мин</span> — настройка с нуля</span>
+        <span class="ticker-sep">✦</span>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         FEATURES (tilt cards)
+    ══════════════════════════════════════════ -->
+    <section id="features">
+      <div class="container">
+
+        <div class="features-header">
+          <div class="features-header-text">
+            <div class="section-label reveal">Возможности</div>
+            <h2 class="display-h reveal delay-1">
+              Всё, что нужно<br>
+              <em>умному бизнесу</em>
+            </h2>
+            <p class="reveal delay-2">Леночка не просто бот. Это система, которая учится твоему бизнесу и делает рутину за тебя — пока ты занимаешься тем, что важно.</p>
+          </div>
+          <div class="features-header-aside reveal delay-2">
+            <div class="aside-stat">
+              <div class="aside-num"><span data-counter data-target="6">0</span>ч</div>
+              <div class="aside-desc">экономит каждую неделю на переписке и поиске информации</div>
+            </div>
+            <div class="aside-stat">
+              <div class="aside-num">+<span data-counter data-target="12">0</span></div>
+              <div class="aside-desc">брошенных клиентов возвращает в первый месяц</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feat-grid">
+          <div class="feat-card reveal delay-1">
+            <div class="feat-number" aria-hidden="true">01</div>
+            <span class="feat-icon">☀️</span>
+            <div class="feat-title">Утренний дайджест</div>
+            <p class="feat-desc">Каждый день в 9:00 — приоритеты, брошенные клиенты, черновики ответов. Начинаешь день с ясной головой.</p>
+          </div>
+          <div class="feat-card reveal delay-2">
+            <div class="feat-number" aria-hidden="true">02</div>
+            <span class="feat-icon">🔍</span>
+            <div class="feat-title">База знаний из чатов</div>
+            <p class="feat-desc">«Что мы договорились с Ивановым?» — 3 секунды. Разбирает всю историю переписок и строит живую базу знаний.</p>
+          </div>
+          <div class="feat-card reveal delay-3">
+            <div class="feat-number" aria-hidden="true">03</div>
+            <span class="feat-icon">📋</span>
+            <div class="feat-title">Задачи и дедлайны</div>
+            <p class="feat-desc">Вытаскивает задачи из переписок автоматически. Ставит напоминания. Сигналит, если что-то горит.</p>
+          </div>
+          <div class="feat-card reveal delay-1">
+            <div class="feat-number" aria-hidden="true">04</div>
+            <span class="feat-icon">🎯</span>
+            <div class="feat-title">Брошенные клиенты</div>
+            <p class="feat-desc">Находит диалоги без ответа, готовит черновики в твоём стиле и возвращает тех, о ком ты забыл.</p>
+          </div>
+          <div class="feat-card reveal delay-2">
+            <div class="feat-number" aria-hidden="true">05</div>
+            <span class="feat-icon">⚡</span>
+            <div class="feat-title">Авто-ответы клиентам</div>
+            <p class="feat-desc">На типовые вопросы отвечает сама. Ты только подтверждаешь — или вообще не тратишь время.</p>
+          </div>
+          <div class="feat-card reveal delay-3">
+            <div class="feat-number" aria-hidden="true">06</div>
+            <span class="feat-icon">📊</span>
+            <div class="feat-title">Авто-CRM из переписок</div>
+            <p class="feat-desc">Строит карточки клиентов прямо из чатов. Никаких форм, никакого ручного ввода. Просто общайся.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FOR WHOM (tabs)
+    ══════════════════════════════════════════ -->
+    <section id="audience">
+      <div class="container">
+
+        <div class="section-label reveal">Для кого</div>
+        <h2 class="display-h reveal delay-1">
+          Твой бизнес — <em>твои правила</em>
+        </h2>
+        <p class="muted reveal delay-2" style="font-size:.9rem;line-height:1.8;max-width:480px;color:var(--muted)">
+          Леночка адаптируется под любой размер и тип бизнеса. Выбери свой случай:
+        </p>
+
+        <div class="audience-tabs reveal delay-2" role="tablist">
+          <button class="aud-tab active" role="tab" data-tab="solo">Соло / фриланс</button>
+          <button class="aud-tab" role="tab" data-tab="small">Малый бизнес</button>
+          <button class="aud-tab" role="tab" data-tab="team">Команда</button>
+        </div>
+
+        <div class="aud-panels">
+
+          <div class="aud-panel active" id="panel-solo" role="tabpanel">
+            <div class="aud-panel-text reveal">
+              <h3>Один — и Леночка</h3>
+              <p>Ты сам отвечаешь на все сообщения, ведёшь переговоры и забываешь о половине задач. Леночка — это твой второй мозг, который помнит всё.</p>
+              <div class="aud-bullets">
+                <div class="aud-bullet">
+                  <span class="aud-bullet-icon">💬</span>
+                  <div class="aud-bullet-text">
+                    <strong>Не теряй клиентов</strong>
+                    <span>Леночка напомнит, кому не ответил, и напишет черновик за тебя</span>
+                  </div>
+                </div>
+                <div class="aud-bullet">
+                  <span class="aud-bullet-icon">🧠</span>
+                  <div class="aud-bullet-text">
+                    <strong>База знаний под рукой</strong>
+                    <span>Условия работы, прайсы, договорённости — в 3 секунды</span>
+                  </div>
+                </div>
+                <div class="aud-bullet">
+                  <span class="aud-bullet-icon">⏰</span>
+                  <div class="aud-bullet-text">
+                    <strong>Вечера — твои</strong>
+                    <span>Леночка закрывает рутину, ты занимаешься делом</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="aud-panel-quote reveal delay-2">
+              <p class="aud-quote-text">«Раньше тратила 2 часа вечером на переписку с клиентами. Теперь 15 минут. Это просто магия.»</p>
+              <div class="aud-quote-person">
+                <div class="aud-quote-ava" aria-hidden="true">💄</div>
+                <div>
+                  <div class="aud-quote-name">Анастасия В.</div>
+                  <div class="aud-quote-role">Бьюти-студия, Москва</div>
+                </div>
+              </div>
+              <div class="aud-result">
+                <div class="aud-result-num">−7 ч</div>
+                <div class="aud-result-desc">экономит в неделю на переписке и рутинных задачах</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="aud-panel" id="panel-small" role="tabpanel">
+            <div class="aud-panel-text reveal">
+              <h3>Малый бизнес без хаоса</h3>
+              <p>Куча чатов с командой и клиентами. Договорённости теряются, задачи зависают. Леночка структурирует хаос и ведёт CRM прямо из Telegram.</p>
+              <div class="aud-bullets">
+                <div class="aud-bullet">
+                  <span class="aud-bullet-icon">📦</span>
+                  <div class="aud-bullet-text">
+                    <strong>Авто-CRM из чатов</strong>
+                    <span>Карточки клиентов создаются сами — без ручного ввода</span>
+                  </div>
+                </div>
+                <div class="aud-bullet">
+                  <span class="aud-bullet-icon">👥</span>
+                  <div class="aud-bullet-text">
+                    <strong>Контроль команды</strong>
+                    <span>Задачи, дедлайны и статус по каждому сотруднику</span>
+                  </div>
+                </div>
+                <div class="aud-bullet">
+                  <span class="aud-bullet-icon">📄</span>
+                  <div class="aud-bullet-text">
+                    <strong>Генерация документов</strong>
+                    <span>Договоры, КП, акты — по шаблону из чата</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="aud-panel-quote reveal delay-2">
+              <p class="aud-quote-text">«Леночка нашла клиента, которому я не ответил 6 дней. Написала за меня — он ответил, мы закрыли сделку на 280К.»</p>
+              <div class="aud-quote-person">
+                <div class="aud-quote-ava" aria-hidden="true">🔨</div>
+                <div>
+                  <div class="aud-quote-name">Артём К.</div>
+                  <div class="aud-quote-role">Кровельные работы, 8 чел., СПб</div>
+                </div>
+              </div>
+              <div class="aud-result">
+                <div class="aud-result-num">×4</div>
+                <div class="aud-result-desc">окупаемость в первую же неделю</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="aud-panel" id="panel-team" role="tabpanel">
+            <div class="aud-panel-text reveal">
+              <h3>Команда в синхроне</h3>
+              <p>Работаешь с несколькими командами, группами и проектами. Леночка ведёт каждого участника и даёт общую сводку по всем сразу.</p>
+              <div class="aud-bullets">
+                <div class="aud-bullet">
+                  <span class="aud-bullet-icon">🗂️</span>
+                  <div class="aud-bullet-text">
+                    <strong>Сводка по всей команде</strong>
+                    <span>Кто что делает, что горит, что просрочено — с птичьего полёта</span>
+                  </div>
+                </div>
+                <div class="aud-bullet">
+                  <span class="aud-bullet-icon">🔔</span>
+                  <div class="aud-bullet-text">
+                    <strong>Личный контекст у каждого</strong>
+                    <span>У каждого сотрудника своя Леночка, знающая его задачи</span>
+                  </div>
+                </div>
+                <div class="aud-bullet">
+                  <span class="aud-bullet-icon">📈</span>
+                  <div class="aud-bullet-text">
+                    <strong>ROI-отчёт каждую неделю</strong>
+                    <span>Сколько сэкономила, сколько клиентов вернула, что сделала</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="aud-panel-quote reveal delay-2">
+              <p class="aud-quote-text">«Мы пробовали CRM трижды — каждый раз бросали. Леночка — первый инструмент, который прижился. Потому что она сама всё делает.»</p>
+              <div class="aud-quote-person">
+                <div class="aud-quote-ava" aria-hidden="true">📦</div>
+                <div>
+                  <div class="aud-quote-name">Михаил Д.</div>
+                  <div class="aud-quote-role">Оптовая торговля, 15 чел., Екб</div>
+                </div>
+              </div>
+              <div class="aud-result">
+                <div class="aud-result-num">0</div>
+                <div class="aud-result-desc">потерянных задач и просроченных дедлайнов за 3 месяца</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         HOW IT WORKS
+    ══════════════════════════════════════════ -->
+    <section id="how">
+      <div class="container">
+        <div class="section-label reveal">Как работает</div>
+        <h2 class="display-h reveal delay-1">
+          От нуля до <em>первого WOW</em><br>за один день
+        </h2>
+
+        <div class="how-grid">
+          <div class="how-step reveal delay-1">
+            <div class="how-step-n" aria-hidden="true">01</div>
+            <div>
+              <span class="how-step-icon">🤝</span>
+              <div class="how-step-title">Знакомство</div>
+              <p class="how-step-desc">Открываешь бота в Telegram, отвечаешь на пару вопросов о бизнесе. Никаких форм и email.</p>
+              <div class="how-step-time">⏱ 2 минуты</div>
+            </div>
+          </div>
+          <div class="how-step reveal delay-2">
+            <div class="how-step-n" aria-hidden="true">02</div>
+            <div>
+              <span class="how-step-icon">🔗</span>
+              <div class="how-step-title">Интеграция чатов</div>
+              <p class="how-step-desc">Подключаешь Telegram Business одной кнопкой. Добавляешь Леночку в рабочие группы.</p>
+              <div class="how-step-time">⏱ 10–20 минут</div>
+            </div>
+          </div>
+          <div class="how-step reveal delay-1">
+            <div class="how-step-n" aria-hidden="true">03</div>
+            <div>
+              <span class="how-step-icon">⚙️</span>
+              <div class="how-step-title">Леночка работает</div>
+              <p class="how-step-desc">Разбирает тысячи сообщений, строит базу знаний, находит брошенные диалоги и задачи.</p>
+              <div class="how-step-time">⏱ 2–3 часа</div>
+            </div>
+          </div>
+          <div class="how-step reveal delay-2">
+            <div class="how-step-n" aria-hidden="true">04</div>
+            <div>
+              <span class="how-step-icon">🎉</span>
+              <div class="how-step-title">Первый WOW — сегодня</div>
+              <p class="how-step-desc">«Нашла 8 брошенных клиентов, 14 задач, 2 горящие ситуации». С этого момента она знает твой бизнес.</p>
+              <div class="how-step-time">🚀 Сегодня вечером</div>
+            </div>
+          </div>
+          <div class="how-step reveal delay-1">
+            <div class="how-step-n" aria-hidden="true">05</div>
+            <div>
+              <span class="how-step-icon">☀️</span>
+              <div class="how-step-title">Завтра в 9:00</div>
+              <p class="how-step-desc">Первый утренний дайджест. Все приоритеты и черновики ответов. Начинаешь день с ясной головой.</p>
+              <div class="how-step-time">☕ Завтра утром</div>
+            </div>
+          </div>
+          <div class="how-step reveal delay-2">
+            <div class="how-step-n" aria-hidden="true">06</div>
+            <div>
+              <span class="how-step-icon">📈</span>
+              <div class="how-step-title">Через 30 дней</div>
+              <p class="how-step-desc">База знаний накопила 2 месяца истории. Леночка знает твой бизнес лучше любого сотрудника.</p>
+              <div class="how-step-time">🔒 Навсегда ваш</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         PRICING (with toggle)
+    ══════════════════════════════════════════ -->
+    <section id="pricing">
+      <div class="container">
+
+        <div class="section-label reveal">Тарифы</div>
+        <h2 class="display-h reveal delay-1">Один тариф.<br><em>Всё включено.</em></h2>
+
+        <div class="plans-single">
+
+          <div class="plan-duo plan-duo-main reveal delay-2">
+            <div class="plan-duo-main-label">Основной</div>
+            <div class="plan-duo-price-wrap">
+              <div class="plan-duo-price">5 000 <span class="plan-duo-currency">₽</span></div>
+              <div class="plan-duo-period">в месяц</div>
+            </div>
+            <div class="plan-duo-anchor">Полный доступ ко всем функциям</div>
+            <div class="plan-duo-divider"></div>
+            <ul class="plan-duo-feats">
+              <li>Утренний дайджест каждый день в 9:00</li>
+              <li>База знаний из переписок</li>
+              <li>Брошенные клиенты и задачи</li>
+              <li>Авто-ответы клиентам</li>
+              <li>Постановка задач из чатов</li>
+              <li>Авто-CRM из переписок</li>
+              <li>Генерация документов</li>
+              <li>Приоритетная поддержка</li>
+            </ul>
+            <a href="https://t.me/Lenochka24_bot" target="_blank" rel="noopener"
+               class="plan-duo-btn plan-duo-btn-primary">
+              Подключить за 5 000 ₽/мес →
+            </a>
+            <p class="plan-duo-cancel">Отмена в любой момент · без скрытых условий</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════════ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-label reveal">Частые вопросы</div>
+        <h2 class="display-h reveal delay-1">Есть вопросы?<br><em>У нас есть ответы.</em></h2>
+
+        <div class="faq-grid">
+
+          <div class="faq-sticky reveal delay-1">
+            <p>Не нашли ответ? Напишите нам напрямую — ответим быстро.</p>
+            <div class="faq-cta-mini">
+              <a href="https://t.me/Lenochka24_bot" target="_blank" rel="noopener">Написать в Telegram →</a>
+              <a href="mailto:lenochkahelp@gmail.com">lenochkahelp@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="faq-list reveal delay-2">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Нужен ли Telegram Premium или Business?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-a" role="region">
+                <p>Для базового функционала достаточно обычного Telegram. Для автоответов клиентам и чтения входящих сообщений нужен <strong>Telegram Business</strong> — он стоит около 200 ₽/мес и подключается в 2 клика прямо в настройках приложения.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Леночка читает мои личные сообщения?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-a" role="region">
+                <p>Леночка получает доступ только к тем чатам, которые вы сами укажете. Личные переписки, не связанные с бизнесом, остаются приватными. Все данные хранятся в зашифрованном виде и не передаются третьим лицам. Подробнее — в <a href="files/politika-konfidencialnosti.docx" download="Леночка_Политика_конфиденциальности.docx" style="color:var(--coral)">Политике конфиденциальности</a>.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Как долго идёт настройка?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-a" role="region">
+                <p>Знакомство — 2 минуты. Подключение чатов — 10–20 минут. Первый анализ истории — 2–3 часа (это Леночка работает в фоне, вы занимаетесь своими делами). <strong>Итого: вечером того же дня</strong> вы уже получаете первый отчёт.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Что будет после 14 дней пробного периода?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-a" role="region">
+                <p>Мы напомним за 3 дня до окончания триала. Вы можете выбрать подходящий тариф или просто не продлевать — <strong>без автосписания</strong>, без обязательств. Карта не требуется даже при регистрации.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Работает ли Леночка с групповыми чатами?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-a" role="region">
+                <p>Да. Вы добавляете Леночку в рабочие группы (с командой, поставщиками, клиентами) — и она отслеживает задачи, договорённости и важные события сразу во всех чатах. На тарифе «Бизнес» и выше — без лимита на количество групп.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Можно ли отключить авто-ответы?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-a" role="region">
+                <p>Конечно. Авто-ответы — это не обязательная функция. Вы настраиваете, в каких чатах и на какие вопросы Леночка отвечает сама, а где только <strong>предлагает черновик</strong> для вашего подтверждения.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         TESTIMONIALS — card carousel
+    ══════════════════════════════════════════ -->
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-label reveal">Отзывы</div>
+        <h2 class="display-h reveal delay-1">Они уже не<br><em>представляют без неё</em></h2>
+      </div>
+
+      <div class="testi-track-outer reveal delay-2">
+        <div class="testi-track-wrap" id="testi-track-wrap">
+          <div class="testi-track" id="testi-track">
+
+            <div class="testi-card-v2">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-q-v2">«За первую неделю Леночка нашла клиента, которому я не ответил 6 дней. Написала за меня — он ответил, мы закрыли сделку на 280 000 ₽. Окупилась в первый же день.»</p>
+              <div class="testi-person-v2">
+                <div class="testi-ava-v2" aria-hidden="true">🔨</div>
+                <div>
+                  <div class="testi-name-v2">Артём К.</div>
+                  <div class="testi-role-v2">Кровельные работы · 8 чел. · СПб</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testi-card-v2">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-q-v2">«Раньше тратила 2 часа вечером на переписку с клиентами. Теперь 15 минут. Леночка отвечает на типовые вопросы сама, я только подтверждаю запись. Это просто магия.»</p>
+              <div class="testi-person-v2">
+                <div class="testi-ava-v2" aria-hidden="true">💄</div>
+                <div>
+                  <div class="testi-name-v2">Анастасия В.</div>
+                  <div class="testi-role-v2">Бьюти-студия · Москва</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testi-card-v2">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-q-v2">«Мы пробовали CRM трижды — каждый раз бросали через месяц. Леночка — первый инструмент, который прижился. Потому что она сама всё делает.»</p>
+              <div class="testi-person-v2">
+                <div class="testi-ava-v2" aria-hidden="true">📦</div>
+                <div>
+                  <div class="testi-name-v2">Михаил Д.</div>
+                  <div class="testi-role-v2">Оптовая торговля · 15 чел. · Екб</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testi-card-v2">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-q-v2">«Утренний дайджест — это как будто у тебя есть личный помощник, который пока ты спишь всё просмотрел и выделил главное. Начинаю день без тревоги.»</p>
+              <div class="testi-person-v2">
+                <div class="testi-ava-v2" aria-hidden="true">🏗️</div>
+                <div>
+                  <div class="testi-name-v2">Сергей Н.</div>
+                  <div class="testi-role-v2">Строительная компания · 22 чел.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testi-card-v2">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-q-v2">«Наконец-то нашла сервис, который не нужно учить месяцами. Настроила за вечер, утром получила первый дайджест. Всё интуитивно и работает.»</p>
+              <div class="testi-person-v2">
+                <div class="testi-ava-v2" aria-hidden="true">🌸</div>
+                <div>
+                  <div class="testi-name-v2">Ольга М.</div>
+                  <div class="testi-role-v2">Детский центр · Казань</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="testi-controls">
+          <button class="testi-nav-btn" id="testi-prev" aria-label="Предыдущий">←</button>
+          <div class="testi-dots" id="testi-dots" role="tablist">
+            <button class="testi-dot active" data-idx="0" role="tab" aria-label="Отзыв 1"></button>
+            <button class="testi-dot" data-idx="1" role="tab" aria-label="Отзыв 2"></button>
+            <button class="testi-dot" data-idx="2" role="tab" aria-label="Отзыв 3"></button>
+            <button class="testi-dot" data-idx="3" role="tab" aria-label="Отзыв 4"></button>
+            <button class="testi-dot" data-idx="4" role="tab" aria-label="Отзыв 5"></button>
+          </div>
+          <button class="testi-nav-btn" id="testi-next" aria-label="Следующий">→</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CTA
+    ══════════════════════════════════════════ -->
+    <section id="cta">
+      <div class="cta-bg-text" aria-hidden="true">Л</div>
+      <div class="container cta-inner">
+        <div class="section-label reveal">Начни сегодня</div>
+        <h2 class="cta-h reveal delay-1">
+          Хватит терять<br>
+          клиентов <em>и время.</em>
+        </h2>
+        <p class="cta-sub reveal delay-2">
+          14 дней бесплатно. Без карты. Настройка за 20 минут.
+          Первый WOW-момент — уже сегодня вечером.
+        </p>
+        <div class="cta-btns reveal delay-3">
+          <a href="https://t.me/Lenochka24_bot" class="btn-fill" target="_blank" rel="noopener">
+            <span>Открыть Леночку в Telegram →</span>
+          </a>
+          <a href="mailto:lenochkahelp@gmail.com" class="btn-outline">Написать команде</a>
+        </div>
+        <div class="cta-trust reveal delay-4">
+          <span class="trust-item">14 дней бесплатно</span>
+          <span class="trust-item">Без карты</span>
+          <span class="trust-item">Настройка 20 мин</span>
+          <span class="trust-item">Отмена в один клик</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer id="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-v2">Леночка<span class="dot">.</span>io</div>
+          <p>ИИ-ассистент в Telegram, который знает твой бизнес.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Продукт</h4>
+            <a href="#features">Возможности</a>
+            <a href="#pricing">Тарифы</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="footer-col">
+            <h4>Связь</h4>
+            <a href="https://t.me/Lenochka24_bot" target="_blank" rel="noopener">Telegram-бот</a>
+            <a href="mailto:lenochkahelp@gmail.com">lenochkahelp@gmail.com</a>
+          </div>
+          <div class="footer-col">
+            <h4>Документы</h4>
+            <a href="files/politika-konfidencialnosti.docx" download="Леночка_Политика_конфиденциальности.docx">Политика конфиденциальности</a>
+            <a href="files/soglasie-na-obrabotku-pdn.docx" download="Леночка_Согласие_на_обработку_ПДн.docx">Пользовательское соглашение</a>
+            <a href="files/publichnaya-oferta.docx" download="Леночка_Публичная_оферта.docx">Публичная оферта</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-disclaimer-v2">
+          Используя сайт, вы соглашаетесь с <a href="files/politika-konfidencialnosti.docx" download="Леночка_Политика_конфиденциальности.docx">Политикой конфиденциальности</a> и <a href="files/soglasie-na-obrabotku-pdn.docx" download="Леночка_Согласие_на_обработку_ПДн.docx">Пользовательским соглашением</a>. Сайт использует файлы cookie. Информация не является публичной офертой согласно ст.&nbsp;437 ГК РФ.
+        </div>
+        <div class="footer-requisites">
+          <span class="footer-req-operator">Оператор&nbsp;/ Исполнитель — ООО «Трикстер»</span>
+          <span>ИНН&nbsp;1683011550 · КПП&nbsp;168301001 · ОГРН&nbsp;1231600002127</span>
+          <span>420500, Россия, Республика Татарстан, г.&nbsp;Иннополис, ул.&nbsp;Университетская, д.&nbsp;5, оф.&nbsp;115</span>
+          <span>Р/с&nbsp;40702810101500175362 · ООО «Банк Точка» · к/с&nbsp;30101810745374525104 · БИК&nbsp;044525104</span>
+          <span>Тел.: <a href="tel:+79995631311">+7&nbsp;(999)&nbsp;563-13-11</a> · <a href="mailto:lenochkahelp@gmail.com">lenochkahelp@gmail.com</a></span>
+        </div>
+        <div class="footer-copy">© 2025 Lenochka.io · Все права защищены.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY BAR -->
+  <div id="sticky-bar">
+    <span class="sticky-text-v2"><strong>Леночка</strong> — 14 дней бесплатно</span>
+    <a href="https://t.me/Lenochka24_bot" class="nav-cta" target="_blank" rel="noopener">Попробовать →</a>
+  </div>
+
+  <!-- COOKIE BANNER -->
+  <div id="cookie-banner" class="hidden" role="dialog" aria-label="Уведомление о cookies">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        🍪 Мы используем <strong>cookie</strong> для корректной работы сервиса и аналитики.
+        Продолжая использовать сайт, вы соглашаетесь с нашей <a href="files/politika-konfidencialnosti.docx" download="Леночка_Политика_конфиденциальности.docx">Политикой конфиденциальности</a>.
+      </div>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Принять все</button>
+        <button class="cookie-btn cookie-btn-decline" id="cookie-decline">Только необходимые</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
