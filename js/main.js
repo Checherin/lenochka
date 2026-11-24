@@ -480,3 +480,49 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   /* ── Init ──────────────────────────────────────────────── */
   updateDots();
 })();
+
+/* ─── LEAD APPLICATION: NO BOT LINK BEFORE SERVER ACK ────── */
+(function () {
+  const form = document.getElementById('lead-form-fields');
+  const state = document.getElementById('lead-state');
+  const success = document.getElementById('lead-success');
+  const telegramLink = document.getElementById('lead-bot-link');
+  if (!form || !state || !success || !telegramLink) return;
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    state.textContent = 'Сохраняем заявку…';
+    const f = new FormData(form);
+    const payload = {
+      name: String(f.get('name') || '').trim(),
+      contact: String(f.get('contact') || '').trim(),
+      business: String(f.get('business') || '').trim(),
+      goal: String(f.get('goal') || '').trim(),
+      website: String(f.get('website') || ''),
+      consent: f.get('consent') === 'on',
+      consentVersion: '2026-11-23'
+    };
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.ok || typeof data.botUrl !== 'string') throw Error('save_failed');
+      const url = new URL(data.botUrl);
+      if (url.protocol !== 'https:' || !['t.me', 'telegram.me'].includes(url.hostname)) throw Error('bad_link');
+      telegramLink.href = url.href;
+      telegramLink.hidden = false;
+      form.hidden = true;
+      success.hidden = false;
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (_) {
+      state.textContent = 'Не удалось сохранить заявку. Повторите попытку или напишите на trixterapp@yandex.ru.';
+      button.disabled = false;
+    }
+  });
+})();
